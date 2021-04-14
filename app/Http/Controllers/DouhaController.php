@@ -2,16 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Repositories\NafilaRepository;
+use App\Repositories\DouhaRepository;
 use Illuminate\Http\Request;
 
-class NafilaController extends Controller
+class DouhaController extends Controller
 {
-    protected $nafilaRepository;
+    protected $douhaRepository;
 
-    public function __construct(NafilaRepository $nafilaRepository)
+    public function __construct(DouhaRepository $douhaRepository)
     {
-        $this->nafilaRepository = $nafilaRepository;
+        $this->douhaRepository = $douhaRepository;
     }
     /**
      * Display a listing of the resource.
@@ -20,8 +20,8 @@ class NafilaController extends Controller
      */
     public function index()
     {
-        $nafilas = $this->nafilaRepository->getAll();
-        return view('nafila.index',compact('nafilas'));
+        $douhas = $this->douhaRepository->getAll();
+        return view('douha.index',compact('douhas'));
     }
 
     /**
@@ -31,7 +31,7 @@ class NafilaController extends Controller
      */
     public function create()
     {
-        return view ('nafila.add');
+        return view ('douha.add');
     }
 
     /**
@@ -42,9 +42,9 @@ class NafilaController extends Controller
      */
     public function store(Request $request)
     {
-        $nafila = $this->nafilaRepository->store($request->all());
+        $douha = $this->douhaRepository->store($request->all());
 
-        return redirect('nafila');
+        return redirect('douha');
 
     }
 
@@ -56,8 +56,8 @@ class NafilaController extends Controller
      */
     public function show($id)
     {
-        $nafila = $this->nafilaRepository->getById($id);
-        return view('nafila.show',compact('nafila'));
+        $douha = $this->douhaRepository->getById($id);
+        return view('douha.show',compact('douha'));
     }
 
     /**
@@ -68,8 +68,8 @@ class NafilaController extends Controller
      */
     public function edit($id)
     {
-        $nafila = $this->nafilaRepository->getById($id);
-        return view('nafila.edit',compact('nafila'));
+        $douha = $this->douhaRepository->getById($id);
+        return view('douha.edit',compact('douha'));
     }
 
     /**
@@ -81,8 +81,8 @@ class NafilaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->nafilaRepository->update($id, $request->all());
-         return redirect('nafila');
+        $this->douhaRepository->update($id, $request->all());
+         return redirect('douha');
     }
 
     /**
@@ -93,14 +93,7 @@ class NafilaController extends Controller
      */
     public function destroy($id)
     {
-        $this->nafilaRepository->destroy($id);
-        return redirect('nafila');
-    }
-
-    // function for API
-
-    public function getLastNafila(){
-        $nafilas = $this->nafilaRepository->getLastNafila();
-        return response()->json($nafilas);
+        $this->douhaRepository->destroy($id);
+        return redirect('douha');
     }
 }

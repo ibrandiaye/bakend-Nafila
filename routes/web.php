@@ -18,8 +18,8 @@ Route::get('/', function () {
     return view('welcome');
 })->name('home')->middleware('auth');;
 Route::resource('/nafila', NafilaController::class)->middleware('auth');
-Route::resource('/rakka', RakkaController::class)->middleware('auth');;
-
+Route::resource('/rakka', RakkaController::class)->middleware('auth');
+Route::resource('/douha', DouhaController::class)->middleware('auth');
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');;
+Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');

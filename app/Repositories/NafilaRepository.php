@@ -10,4 +10,12 @@ class NafilaRepository extends RessourceRepository{
         $this->model = $nafila;
     }
 
+    public function getLastNafila(){
+
+        return Nafila::with('rakkas')
+        ->orderBy('id','desc')
+        ->limit(1)
+        ->get();
+    }
+
 }

@@ -1,7 +1,7 @@
 {{-- \resources\views\permissions\create.blade.php --}}
 @extends('welcome')
 
-@section('title', '| Modifier Nafila')
+@section('title', '| Modifier douha')
 
 @section('content')
 
@@ -12,12 +12,12 @@
                 <div class="container-fluid">
                     <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0 text-info">Modifier Nafila</h1>
+                        <h1 class="m-0 text-info">Modifier douha</h1>
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="{{ route('home') }}" role="button" class="btn btn-primary">ACCUEIL</a></li>
-                        <li class="breadcrumb-item active"><a href="{{ route('nafila.index') }}" role="button" class="btn btn-primary">RETOUR</a></li>
+                        <li class="breadcrumb-item active"><a href="{{ route('douha.index') }}" role="button" class="btn btn-primary">RETOUR</a></li>
 
                         </ol>
                     </div><!-- /.col -->
@@ -25,10 +25,10 @@
                 </div><!-- /.container-fluid -->
             </div>
 
-        {!! Form::model($rakka, ['method'=>'PATCH','route'=>['rakka.update', $rakka->id]]) !!}
+        {!! Form::model($douha, ['method'=>'PATCH','route'=>['douha.update', $douha->id]]) !!}
             @csrf
              <div class="card border-danger border-0">
-                        <div class="card-header bg-info text-center">FORMULAIRE DE MODIFICATION D'une nafila</div>
+                        <div class="card-header bg-info text-center">FORMULAIRE DE MODIFICATION D'une douha</div>
                             <div class="card-body">
                                 @if ($errors->any())
                                     <div class="alert alert-danger">
@@ -40,27 +40,11 @@
                                     </div>
                                 @endif
 
-                                <div class="col-lg-6">
+                                <div class="col-lg-12">
                                     <div class="form-group">
-                                        <label>nombre</label>
-                                        <input type="number" name="nombre"  value="{{ $rakka->nombre}}" class="form-control"  required>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="form-group">
-                                        <label>Sarr</label>
-                                        <input type="text" name="sarr"  value="{{ $rakka->sarr }}" class="form-control"  required>
-                                    </div>
-                                </div>
-
-                                <div class="col-lg-6">
-                                    <div class="form-group">
-                                        <label>Nafila</label>
-                                        <select class="form-control" name="nafila_id" required>
-                                            @foreach ($nafilas as $nafila)
-                                            <option value="{{ $nafila->id }}">{{ $nafila->jour }} jour</option>
-                                            @endforeach
-                                        </select>
+                                    <label>Commentaire</label>
+                                    <textarea class="textarea" name="contenu" placeholder="Place some text here"
+                                              style="width: 100%; height: 240px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;">{{ $douha->contenu }}</textarea>
                                     </div>
                                 </div>
                                 <div>
